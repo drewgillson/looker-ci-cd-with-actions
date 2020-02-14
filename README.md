@@ -18,7 +18,6 @@ By the end of this workshop you will be able to use Terraform to quickly create 
     terraform init
     terraform apply
 ```
-
 4. After your instances are ready, log into the Looker UI and manually create a database connection on both DEV and PROD:
     - Name: internal
     - Dialect: MySQL
@@ -52,15 +51,14 @@ By the end of this workshop you will be able to use Terraform to quickly create 
 
 9. Configure Github Actions by placing the contents of the `github` directory in this repository into a `.github` directory in your new forked repository. It might be easiest to do this within the Github UI. You need to create four files:
 ```
-    .github/actions/requirements.txt
-    .github/actions/run_data_tests_and_content_validator.py
-    .github/workflows/deploy_to_production.yml
-    .github/workflows/run_data_tests_and_content_validator.yml
+    [https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/actions/requirements.txt](.github/actions/requirements.txt)
+    [https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/actions/run_data_tests_and_content_validator.py](.github/actions/run_data_tests_and_content_validator.py)
+    [https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/workflows/deploy_to_production.yml](.github/workflows/deploy_to_production.yml)
+    [.github/workflows/run_data_tests_and_content_validator.yml](https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/workflows/run_data_tests_and_content_validator.yml)
 ```
-
 ## Exercises
 You're ready to play!
 
-1. Commit a breaking change to your personal development branch (hint: just change the assertion expression on line 12 of `fruit_store.model.lkml` to a different fruit); then observe how Github Actions runs data tests automatically and will insert a comment above any failing `test` structures.
+1. Commit a breaking change to your personal development branch (hint: just change the assertion expression on line 12 of `fruit_store.model.lkml` to a different fruit); then observe how Github Actions runs data tests automatically and will insert a comment above any failing `test` structures. Try to understand why we have to check the commit message using the [contains](https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#functions) function on line 49 of [run_data_tests_and_content_validator.yml](https://github.com/drewgillson/looker-ci-cd-with-actions/blob/master/github/workflows/run_data_tests_and_content_validator.yml#L49)
 
-2. Create a new branch called 'release/YYYYMMDD' and observe how Github Actions automatically promotes your new release branch to Prod.
+2. Create a new branch called 'release/YYYYMMDD' and observe how Github Actions automatically promotes your new release branch to Prod. This strategy would require a release coordinator to cut a release branch outside of Looker based on the feedback from their UAT team.
