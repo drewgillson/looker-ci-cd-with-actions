@@ -1,6 +1,15 @@
 # Looker CI/CD with Github Actions Workshop
 ## Learning Objectives
-By the end of this workshop you will be able to use Terraform to quickly create Looker environments for testing purposes. You will create a Development and a Production environment, and you will configure Github Actions to automatically run data tests and the content validator each time someone makes a commit to their personal branch on Dev. You will also configure Github Actions to watch for commits to branches beginning with the word _release_, and when it finds them, to automatically deploy the contents to Prod.
+By the end of this workshop
+- You will be able to use Terraform to quickly create Looker environments for testing purposes.
+- You will create an isolated Development environment and a Production environment in less than 10 minutes.
+- You will configure Github Actions to automatically run data tests and the content validator each time someone makes a commit to their personal branch on Dev.
+- You will also configure Github Actions to watch for commits to branches beginning with the word _release_, and when it finds them, to automatically deploy their contents to Prod.
+
+This workshop will aim to improve your understanding of Looker data tests, various command line skills, your Git knowledge, your understanding of the configuration-as-code paradigm, and it will introduce you to a bit of Python. All this will come together to make CI/CD mean something. You will finish the afternoon with a clearer idea of how to support customers who want to build complex development workflows.
+
+The overall goal of the session is to be able to advise customers about a best practice approach for code and content migration that is simpler than our prior approaches, which we will create together.
+> Food for thought: I'm beginning to think that our higher level environments should always be ephemeral. There is no reason to have QA, Cert, or Production instances hooked up to an upstream repo with that is supposed to be around forever, or even the machine(s) for that matter. I think we should start recommending toasting the contents of upper instances any time a release happens. If we push the approved release branch to the upper environments as the first commit in a new bare repository, it enforces a one-way content journey and saves everyone the headache of content reconciliation. Scripts can regularly push newly-developed Prod content back to the lowest-level Dev instances (even if the content has to be modified to consume dummy data). Would love to get some criticism.
 
 ![Visual Overview](github-actions-data-tests-integration.gif)
 
