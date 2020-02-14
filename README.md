@@ -11,7 +11,11 @@ This workshop will aim to improve your understanding of Looker data tests, vario
 The overall goal of the session is to be able to advise customers about a best practice approach for code and content migration that is simpler than our prior approaches, which we will create together.
 > Food for thought: I'm beginning to think that our higher level environments should always be ephemeral. There is no reason to have QA, Cert, or Production instances hooked up to an upstream repo with that is supposed to be around forever, or even the machine(s) for that matter. I think we should start recommending toasting the contents of upper instances any time a release happens. If we push the approved release branch to the upper environments as the first commit in a new bare repository, it enforces a one-way content journey and saves everyone the headache of content reconciliation. Scripts can regularly push newly-developed Prod content back to the lowest-level Dev instances (even if the content has to be modified to consume dummy data). Would love to get some criticism.
 
+### Automatically Running Data Tests and Leaving Annotations
 ![Visual Overview](github-actions-data-tests-integration.gif)
+
+### Automatically Deploying Release Branches to Production
+![Visual Overview](github-actions-deploy-to-prod.gif)
 
 ## Prerequisites
 * Ensure you have SSH keys in `~/.ssh`. If you don't have any you will need to [generate](https://help.github.com/en/enterprise/2.18/user/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) a keypair.
