@@ -3,8 +3,8 @@
 By the end of this workshop you will be able to use Terraform to quickly create Looker environments for testing purposes. You will create a Development and a Production environment, and you will configure Github Actions to automatically run data tests and the content validator each time someone makes a commit to their personal branch, in the Development environment. You will also configure Github Actions to watch for commits to branches beginning with the word _release_, and when it finds them, to automatically deploy the contents to the Production instance.
 
 ## Prerequisites
-* Ensure you have an SSH key
-* Install Terraform
+* Ensure you have SSH keys in `~/.ssh`. If you don't have any you will need to [generate](https://help.github.com/en/enterprise/2.18/user/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) a keypair.
+* [Install Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)
 
 ## Setup Instructions
 1. First, fork this repository and check it out to your local computer
@@ -33,9 +33,9 @@ By the end of this workshop you will be able to use Terraform to quickly create 
     - Go to the dev Project Settings page and reset the git connection
     - Point the project to your new repository and ensure you give the Deploy Key write access
 
-7. Create API keys for your user, you will need the client ID and secret in the next step.
+7. On your DEV instance, create API keys for your user. You will need the client ID and secret in the next step.
 
-8. Set values for the following secrets on your Github project's Settings > Secrets page. You can find the values for your public and private key in your `~/.ssh` directory and you should use the same key that Terraform used.
+8. On your Github project's Settings > Secrets page, set values for the following secrets. You can find the values for your public and private key by inspecting the contents of the files in your `~/.ssh` directory. You should use the same key that Terraform used.
 
     | Secret                  | Example Value                                             |
     |-------------------------|-----------------------------------------------------------|
@@ -48,7 +48,7 @@ By the end of this workshop you will be able to use Terraform to quickly create 
     | PUBLIC_KEY              | ssh-rsa A1B2C3D4E5F6 ...                                  |
     | PROJECT_ID              | dev                                                       |
 
-9. Configure Github Actions by placing the contents of the `github` directory in this repository into a `.github` directory in your new forked repository. You need to create four files:
+9. Configure Github Actions by placing the contents of the `github` directory in this repository into a `.github` directory in your new forked repository. It might be easiest to do this within the Github UI. You need to create four files:
 ```
     .github/actions/requirements.txt
     .github/actions/run_data_tests_and_content_validator.py
