@@ -36,7 +36,7 @@ By the end of this workshop you will be able to use Terraform to quickly create 
 
 7. On your DEV instance, create API keys for your user. You will need the client ID and secret in the next step.
 
-8. On your Github project's Settings > Secrets page, set values for the following secrets. You can find the values for your public and private key by inspecting the contents of the files in your `~/.ssh` directory. You should use the same key that Terraform used.
+8. On your Github project's Settings > Secrets page, set values for the following secrets, which get used by the Python and Bash code within the Actions. You can find the values for your public and private key by inspecting the contents of the files in your `~/.ssh` directory. You need to use the same key that Terraform used.
 
     | Secret                  | Example Value                                             |
     |-------------------------|-----------------------------------------------------------|
