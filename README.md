@@ -7,13 +7,17 @@ By the end of this workshop you will be able to use Terraform to quickly create 
 * Install Terraform
 
 ## Setup Instructions
-1. First, fork this repository, check it out to your local computer, and create your DEV and PROD Looker instances by running these Terraform commands in the working directory:
+1. First, fork this repository and check it out to your local computer
+
+2. Edit your `variables.tf` file and update the AWS API credentials with your own. Get these by following [instructions on Guru](https://app.getguru.com/card/iozzGyeT/Setup-for-AWS-API-Creds-Through-Lookery-SSO).
+
+3. Now, create your DEV and PROD Looker instances by running these Terraform commands in the working directory:
 ```
     terraform init
     terraform apply
 ```
 
-2. After your instances are ready, manually create a database connection on both DEV and PROD:
+4. After your instances are ready, log into the Looker UI and manually create a database connection on both DEV and PROD:
     - Name: internal
     - Dialect: MySQL
     - Host: 127.0.0.1
@@ -21,17 +25,17 @@ By the end of this workshop you will be able to use Terraform to quickly create 
     - Persistent Derived Tables: yes
     - Temp Database: looker_tmp
 
-3. On your PROD instance, create a blank project called 'production'
+5. On your PROD instance, create a blank project called 'production'
     - Configure the project to use a git bare repository
 
-4. On your DEV instance, create a project called 'dev' using the Git Repository URL [git://github.com/drewgillson/my_fruit_basket.git](https://github.com/drewgillson/my_fruit_basket) as the starting point
+6. On your DEV instance, create a project called 'dev' using the Git Repository URL [git://github.com/drewgillson/my_fruit_basket.git](https://github.com/drewgillson/my_fruit_basket) as the starting point
     - Create a new repository in your own Github account
     - Go to the dev Project Settings page and reset the git connection
     - Point the project to your new repository and ensure you give the Deploy Key write access
 
-6. Create API keys for your user, you will need the client ID and secret in the next step.
+7. Create API keys for your user, you will need the client ID and secret in the next step.
 
-7. Set values for the following secrets on your Github project's Settings > Secrets page. You can find the values for your public and private key in your `~/.ssh` directory.
+8. Set values for the following secrets on your Github project's Settings > Secrets page. You can find the values for your public and private key in your `~/.ssh` directory and you should use the same key that Terraform used.
 
     | Secret                  | Example Value                                             |
     |-------------------------|-----------------------------------------------------------|
@@ -44,9 +48,17 @@ By the end of this workshop you will be able to use Terraform to quickly create 
     | PUBLIC_KEY              | ssh-rsa A1B2C3D4E5F6 ...                                  |
     | PROJECT_ID              | dev                                                       |
 
-8. Configure Github Actions by placing the contents of the `github` directory in this repository into a `.github` directory in your new forked repository
+9. Configure Github Actions by placing the contents of the `github` directory in this repository into a `.github` directory in your new forked repository. You need to create four files:
+```
+    .github/actions/requirements.txt
+    .github/actions/run_data_tests_and_content_validator.py
+    .github/workflows/deploy_to_production.yml
+    .github/workflows/run_data_tests_and_content_validator.yml
+```
 
 ## Exercises
+You're ready to play!
 
 1. Commit a breaking change to your personal development branch (hint: just change the assertion expression on line 12 of `fruit_store.model.lkml` to a different fruit); then observe how Github Actions runs data tests automatically and will insert a comment above the `test` structure to let you know the test has failed.
+
 2. Create a new branch called 'release/YYYYMMDD' and observe how Github Actions automatically promotes your new release branch to Prod.
