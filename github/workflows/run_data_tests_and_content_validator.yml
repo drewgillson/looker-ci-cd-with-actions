@@ -1,0 +1,53 @@
+name: Run Looker Data Tests and Content Validator
+on:
+  push:
+    branches:    
+    - 'dev-looker-*'
+env:
+  LOOKERSDK_API_VERSION: ${{ secrets.LOOKERSDK_API_VERSION }}
+  LOOKERSDK_BASE_URL: ${{ secrets.LOOKERSDK_BASE_URL }}
+  LOOKERSDK_CLIENT_ID: ${{ secrets.LOOKERSDK_CLIENT_ID }}
+  LOOKERSDK_CLIENT_SECRET: ${{ secrets.LOOKERSDK_CLIENT_SECRET }}
+  LOOKERSDK_TIMEOUT: ${{ secrets.LOOKERSDK_TIMEOUT }}
+  LOOKERSDK_VERIFY_SSL: ${{ secrets.LOOKERSDK_VERIFY_SSL }}
+
+jobs:
+  start:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7.6
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        pwd
+        ls -la
+        python -m pip install --upgrade pip
+        pip install -r .github/actions/requirements.txt
+    - name: Add SSH keys to push annotations back to origin
+      run: |
+        mkdir ~/.ssh
+        cat <<EOT | tee -a ~/.ssh/id_rsa
+        ${{ secrets.PRIVATE_KEY }}
+        EOT
+        chmod 600 ~/.ssh/id_rsa
+        cat <<EOT | tee -a ~/.ssh/id_rsa.pub
+        ${{ secrets.PUBLIC_KEY }}
+        EOT
+        chmod 644 ~/.ssh/id_rsa.pub
+        eval "$(ssh-agent -s)"
+        ssh-add
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+        git config --global core.editor "vi"
+    - name: Run data tests and content validator
+      run: |
+        python .github/actions/run_data_tests_and_content_validator.py ${{ github.ref }} ${{ secrets.PROJECT_ID }}
+    - name: Commit test annotations
+      if: failure() && contains(github.event.head_commit.message, 'Automatically annotated failed test') == false
+      run: |
+        git add *
+        git commit -am "ci: Automatically annotated failed test"
+        git push -u origin `echo "${{ github.ref }}" | sed 's/refs\/heads\///'`

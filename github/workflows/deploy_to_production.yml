@@ -1,0 +1,35 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:    
+      - 'release**'  # Push events to branches matching refs/heads/releases/*
+
+jobs:
+  start:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Add SSH keys to push annotations back to origin
+      run: |
+        mkdir ~/.ssh
+        cat <<EOT | tee -a ~/.ssh/id_rsa
+        ${{ secrets.PRIVATE_KEY }}
+        EOT
+        chmod 600 ~/.ssh/id_rsa
+        cat <<EOT | tee -a ~/.ssh/id_rsa.pub
+        ${{ secrets.PUBLIC_KEY }}
+        EOT
+        chmod 644 ~/.ssh/id_rsa.pub
+        eval "$(ssh-agent -s)"
+        ssh-add
+    - name: Deploy to production
+      run: |
+        rm -rf .git .github
+        ls -ltr
+        scp -r -C -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa `pwd`/ ubuntu@ec2-44-229-2-167.us-west-2.compute.amazonaws.com:/home/ubuntu
+        ssh -i ~/.ssh/id_rsa ubuntu@ec2-44-229-2-167.us-west-2.compute.amazonaws.com "sudo -H -u looker bash -c 'cp -Rav /home/ubuntu/$(basename $(pwd))/* /home/looker/looker/models/production; cd /home/looker/looker/models/production; git config --global user.email \"action@github.com\"; git config --global user.name \"GitHub Action\"; git commit -am \"Deploy\"; git push -u origin master'"
+        ssh -i ~/.ssh/id_rsa ubuntu@ec2-44-229-2-167.us-west-2.compute.amazonaws.com "rm -rf $(basename $(pwd))"
+        curl -s -k https://ec2-44-229-2-167.us-west-2.compute.amazonaws.com:9999/webhooks/projects/production/deploy
