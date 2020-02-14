@@ -2,6 +2,8 @@
 ## Learning Objectives
 By the end of this workshop you will be able to use Terraform to quickly create Looker environments for testing purposes. You will create a Development and a Production environment, and you will configure Github Actions to automatically run data tests and the content validator each time someone makes a commit to their personal branch on Dev. You will also configure Github Actions to watch for commits to branches beginning with the word _release_, and when it finds them, to automatically deploy the contents to Prod.
 
+![Visual Overview](github-actions-data-tests-integration.gif)
+
 ## Prerequisites
 * Ensure you have SSH keys in `~/.ssh`. If you don't have any you will need to [generate](https://help.github.com/en/enterprise/2.18/user/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) a keypair.
 * [Install Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)
