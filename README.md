@@ -59,6 +59,6 @@ By the end of this workshop you will be able to use Terraform to quickly create 
 ## Exercises
 You're ready to play!
 
-1. Commit a breaking change to your personal development branch (hint: just change the assertion expression on line 12 of `fruit_store.model.lkml` to a different fruit); then observe how Github Actions runs data tests automatically and will insert a comment above the `test` structure to let you know the test has failed.
+1. Commit a breaking change to your personal development branch (hint: just change the assertion expression on line 12 of `fruit_store.model.lkml` to a different fruit); then observe how Github Actions runs data tests automatically and will insert a comment above any failing `test` structures.
 
 2. Create a new branch called 'release/YYYYMMDD' and observe how Github Actions automatically promotes your new release branch to Prod.
