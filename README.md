@@ -50,12 +50,11 @@ By the end of this workshop you will be able to use Terraform to quickly create 
     | PROJECT_ID              | dev                                                       |
 
 9. Configure Github Actions by placing the contents of the `github` directory in this repository into a `.github` directory in your new forked repository. It might be easiest to do this within the Github UI. You need to create four files:
-```
-    [.github/actions/requirements.txt](https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/actions/requirements.txt)
-    [.github/actions/run_data_tests_and_content_validator.py](https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/actions/run_data_tests_and_content_validator.py)
-    [.github/workflows/deploy_to_production.yml](https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/workflows/deploy_to_production.yml)
-    [.github/workflows/run_data_tests_and_content_validator.yml](https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/workflows/run_data_tests_and_content_validator.yml)
-```
+    - [.github/actions/requirements.txt](https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/actions/requirements.txt)
+    - [.github/actions/run_data_tests_and_content_validator.py](https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/actions/run_data_tests_and_content_validator.py)
+    - [.github/workflows/deploy_to_production.yml](https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/workflows/deploy_to_production.yml)
+    - [.github/workflows/run_data_tests_and_content_validator.yml](https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/workflows/run_data_tests_and_content_validator.yml)
+
 ## Exercises
 You're ready to play!
 
