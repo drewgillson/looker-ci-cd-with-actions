@@ -6,9 +6,9 @@ By the end of this workshop
 - You will configure Github Actions to automatically run data tests and the content validator each time someone makes a commit to their personal branch on Dev.
 - You will also configure Github Actions to watch for commits to branches beginning with the word _release_, and when it finds them, to automatically deploy their contents to Prod.
 
-This workshop will aim to improve your understanding of Looker data tests, various command line skills, your Git knowledge, your understanding of the configuration-as-code paradigm, and it will introduce you to a bit of Python. All this will come together to make CI/CD mean something. You will finish the afternoon with a clearer idea of how to support customers who want to build complex development workflows.
+This workshop will aim to improve your understanding of Looker data tests, various command line skills, your Git knowledge, your understanding of the configuration-as-code paradigm, and it will introduce you to a bit of Python. You will finish the workshop with a clearer idea of how to support customers who want to build complex development workflows including CI/CD-like functionality.
 
-The overall goal of the session is to be able to advise customers about a best practice approach for code and content migration that is simpler than our prior approaches, which we will create together.
+The overall goal of the session is to be able to advise customers about a best practice approach for code and content migration.
 
 ## What's Possible
 ### Run Data Tests and Leave Annotations On Failing Tests
@@ -19,7 +19,6 @@ The overall goal of the session is to be able to advise customers about a best p
 
 ### Update remote_dependency `ref` Value By Tracking Hub Commits
 [![Visual Overview](https://github.com/drewgillson/looker-fruit-basket/raw/master/.github/workflows/github-actions-update-remote-dependency-ref.gif)](https://github.com/drewgillson/looker-fruit-basket/blob/master/.github/workflows/update_remote_dependency_ref.yml)
-
 
 ## Prerequisites
 * Ensure you have SSH keys in `~/.ssh`. If you don't have any you will need to [generate](https://help.github.com/en/enterprise/2.18/user/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) a keypair.
