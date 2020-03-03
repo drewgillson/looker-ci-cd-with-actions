@@ -8,14 +8,6 @@ variable "technical_contact_email" {
   default = "" # your organization's technical contact for Looker
 }
 
-variable "aws_access_key" {
-    default = "" # your AWS access token, find in ~/.aws/credentials or create new
-}
-
-variable "aws_secret_key" {
-    default = "" # your AWS secret, find in ~/.aws/credentials or create new
-}
-
 variable "aws_region" {
     default = "us-west-2"
 }
