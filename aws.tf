@@ -194,6 +194,6 @@ resource "random_string" "password" {
 }
 
 output "Details" {
-  value = "\n\nLooker password is ${random_string.password}\n\nStarted DEV\nhttps://${aws_eip.ip-looker-env.0.public_dns}:9999\nssh -i ~/.ssh/${var.key} ubuntu@${aws_eip.ip-looker-env.0.public_dns}\n\nStarted PROD\nhttps://${aws_eip.ip-looker-env.1.public_dns}:9999\nssh -i ~/.ssh/${var.key} ubuntu@${aws_eip.ip-looker-env.1.public_dns}\n\nYou will need to wait a few minutes for the instances to become available.\n\n"
+  value = "\n\nLooker password is ${random_string.password.result}\n\nStarted DEV\nhttps://${aws_eip.ip-looker-env.0.public_dns}:9999\nssh -i ~/.ssh/${var.key} ubuntu@${aws_eip.ip-looker-env.0.public_dns}\n\nStarted PROD\nhttps://${aws_eip.ip-looker-env.1.public_dns}:9999\nssh -i ~/.ssh/${var.key} ubuntu@${aws_eip.ip-looker-env.1.public_dns}\n\nYou will need to wait a few minutes for the instances to become available.\n\n"
 }
 
