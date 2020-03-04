@@ -38,6 +38,7 @@ The overall goal of the session is to be able to advise customers about a best p
     - Name: internal
     - Dialect: MySQL
     - Host: 127.0.0.1
+    - Database: looker
     - Username: looker
     - Password: _use generated password found at the bottom of Terraform output_
     - Persistent Derived Tables: yes
