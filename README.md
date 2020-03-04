@@ -48,13 +48,13 @@ The overall goal of the session is to be able to advise customers about a best p
     - Configure the project to use a git bare repository
 
 6. On your DEV instance, create a project called 'dev' using the Git Repository URL [git://github.com/drewgillson/my_fruit_basket.git](https://github.com/drewgillson/my_fruit_basket) as the starting point
-    - Create a new repository in your own Github account
+    - Create a new project repository in your own Github account
     - Go to the dev Project Settings page and reset the git connection
     - Point the project to your new repository and ensure you give the Deploy Key write access
 
 7. On your DEV instance, create API keys for your user. You will need the client ID and secret in the next step.
 
-8. On your Github project's Settings > Secrets page, set values for the following secrets, which get used by the Python and Bash code within the Actions. You can find the values for your public and private key by inspecting the contents of the files in your `~/.ssh` directory. You need to use the same key that Terraform used.
+8. On your Github project's Settings > Secrets page, set values for the following secrets for your DEV instance, which get used by the Python and Bash code within the Actions. You can find the values for your public and private key by inspecting the contents of the files in your `~/.ssh` directory. You need to use the same key that Terraform used.
 
     | Secret                  | Example Value                                             |
     |-------------------------|-----------------------------------------------------------|
@@ -67,7 +67,7 @@ The overall goal of the session is to be able to advise customers about a best p
     | PUBLIC_KEY              | ssh-rsa A1B2C3D4E5F6 ...                                  |
     | PROJECT_ID              | dev                                                       |
 
-9. Configure Github Actions by placing the contents of the `github` directory in this repository into a `.github` directory in your new forked repository. It might be easiest to do this within the Github UI. You need to create four files:
+9. Configure Github Actions by placing the contents of the `github` directory in this repository into a `.github` directory in your new project repository (the one that now contains a copy of my_fruit_basket.git). It might be easiest to do this within the Github UI. You need to create four files:
     - [.github/actions/requirements.txt](https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/actions/requirements.txt)
     - [.github/actions/run_data_tests_and_content_validator.py](https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/actions/run_data_tests_and_content_validator.py)
     - [.github/workflows/deploy_to_production.yml](https://raw.githubusercontent.com/drewgillson/looker-ci-cd-with-actions/master/github/workflows/deploy_to_production.yml)
