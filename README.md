@@ -6,7 +6,7 @@ By the end of this workshop
 - You will configure Github Actions to automatically run data tests and the content validator each time someone makes a commit to their personal branch on Dev.
 - You will also configure Github Actions to watch for commits to branches beginning with the word _release_, and when it finds them, to automatically deploy their contents to Prod.
 
-This workshop will aim to improve your understanding of Looker data tests, various command line skills, your Git knowledge, your understanding of the configuration-as-code paradigm, and it will introduce you to a bit of Python. You will finish the workshop with a clearer idea of how to support customers who want to build complex development workflows including CI/CD-like functionality.
+This workshop will aim to improve your understanding of Looker data tests, various command line skills, your Git knowledge, your understanding of the configuration-as-code paradigm, and it will introduce you to a bit of Python by leveraging the Looker Python SDK. You will finish the workshop with a clearer idea of how to support customers who want to build complex development workflows including CI/CD-like functionality.
 
 The overall goal of the session is to be able to advise customers about a best practice approach for code and content migration.
 
