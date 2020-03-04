@@ -25,7 +25,7 @@ The overall goal of the session is to be able to advise customers about a best p
 * [Install Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)
 
 ## Setup Instructions
-1. First, fork this repository and check it out to your local computer
+1. First, fork this repository and check it out to your local computer, then edit `variables.tf` to set your own Looker license key and technical contact email.
 
 2. Run `aws-azure-login --profile="sandbox"` to refresh your AWS API credentials. Follow the [instructions on Guru](https://app.getguru.com/card/iozzGyeT/Setup-for-AWS-API-Creds-Through-Lookery-SSO) to install the aws-azure-login utility.
 
