@@ -27,7 +27,7 @@ The overall goal of the session is to be able to advise customers about a best p
 ## Setup Instructions
 1. First, fork this repository and check it out to your local computer
 
-2. Edit your `variables.tf` file and update the AWS API credentials with your own. Get these by following [instructions on Guru](https://app.getguru.com/card/iozzGyeT/Setup-for-AWS-API-Creds-Through-Lookery-SSO).
+2. Run `aws-azure-login --profile="sandbox"` to refresh your AWS API credentials. Follow the [instructions on Guru](https://app.getguru.com/card/iozzGyeT/Setup-for-AWS-API-Creds-Through-Lookery-SSO) to install the aws-azure-login utility.
 
 3. Now, create your DEV and PROD Looker instances by running these Terraform commands in the working directory:
 ```
