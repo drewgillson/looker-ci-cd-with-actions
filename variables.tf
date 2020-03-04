@@ -9,7 +9,7 @@ variable "technical_contact_email" {
 }
 
 variable "aws_region" {
-    default = "us-west-2"
+    default = "us-east-1"
 }
 
 variable "instances" {
@@ -21,7 +21,7 @@ variable "ec2_instance_type" {
 }
 
 variable "ami_id" {
-    default = "ami-0bbe6b35405ecebdb" # Ubuntu 18.04 x86
+    default = "ami-07ebfd5b3428b6f4d" # Ubuntu 18.04 x86
 }
 
 variable "provisioning_script" {

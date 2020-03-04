@@ -105,7 +105,7 @@ resource "aws_security_group" "ingress-all-looker" {
 
 # Choose an existing public/private key pair to use for authentication
 resource "aws_key_pair" "key" {
-  key_name   = "key"
+  key_name   = "key${aws_vpc.looker-env.id}"
   public_key = "${file("~/.ssh/${var.key}.pub")}" # this file must be an existing public key!
 }
 
