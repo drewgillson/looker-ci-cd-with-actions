@@ -54,7 +54,7 @@ The overall goal of the session is to be able to advise customers about a best p
 
 7. On your DEV instance, create API keys for your user. You will need the client ID and secret in the next step.
 
-8. On your Github project's Settings > Secrets page, set values for the following secrets for your DEV instance, which get used by the Python and Bash code within the Actions. You can find the values for your public and private key by inspecting the contents of the files in your `~/.ssh` directory. You need to use the same key that Terraform used.
+8. On your new project repository's Github > Settings > Secrets page, set values for the following secrets from your DEV instance, which get used by the Python and Bash code within the Actions. You can find the values for your public and private key by inspecting the contents of the files in your `~/.ssh` directory. You need to use the same key that Terraform used.
 
     | Secret                  | Example Value                                             |
     |-------------------------|-----------------------------------------------------------|
