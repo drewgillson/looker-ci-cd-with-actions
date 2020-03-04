@@ -10,16 +10,6 @@ This workshop will aim to improve your understanding of Looker data tests, vario
 
 The overall goal of the session is to be able to advise customers about a best practice approach for code and content migration.
 
-## What's Possible
-### Run Data Tests and Leave Annotations On Failing Tests
-![Visual Overview](github-actions-data-tests-integration.gif)
-
-### Deploy Release Branches to Production Automatically
-![Visual Overview](github-actions-deploy-to-prod.gif)
-
-### Update remote_dependency `ref` Value By Tracking Hub Commits
-[![Visual Overview](https://github.com/drewgillson/looker-fruit-basket/raw/master/.github/workflows/github-actions-update-remote-dependency-ref.gif)](https://github.com/drewgillson/looker-fruit-basket/blob/master/.github/workflows/update_remote_dependency_ref.yml)
-
 ## Prerequisites
 * Ensure you have SSH keys in `~/.ssh`. If you don't have any you will need to [generate](https://help.github.com/en/enterprise/2.18/user/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) a keypair.
 * [Install Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)
@@ -79,3 +69,13 @@ You're ready to play!
 1. Commit a breaking change to your personal development branch (hint: just change the assertion expression on line 12 of `fruit_store.model.lkml` to a different fruit); then observe how Github Actions runs data tests automatically and will insert a comment above any failing `test` structures. Try to understand why we have to check the commit message using the [contains](https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#functions) function on line 49 of [run_data_tests_and_content_validator.yml](https://github.com/drewgillson/looker-ci-cd-with-actions/blob/master/github/workflows/run_data_tests_and_content_validator.yml#L49)
 
 2. Create a new branch called 'release/YYYYMMDD' and observe how Github Actions automatically promotes your new release branch to Prod. This strategy would require a release coordinator to cut a release branch outside of Looker based on the feedback from their UAT team.
+
+## What's Possible
+### Run Data Tests and Leave Annotations On Failing Tests
+![Visual Overview](github-actions-data-tests-integration.gif)
+
+### Deploy Release Branches to Production Automatically
+![Visual Overview](github-actions-deploy-to-prod.gif)
+
+### Update remote_dependency `ref` Value By Tracking Hub Commits
+[![Visual Overview](https://github.com/drewgillson/looker-fruit-basket/raw/master/.github/workflows/github-actions-update-remote-dependency-ref.gif)](https://github.com/drewgillson/looker-fruit-basket/blob/master/.github/workflows/update_remote_dependency_ref.yml)
